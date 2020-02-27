@@ -325,17 +325,206 @@
 
 // console.log(isDesigner);
 
-function tipAmount(bill) {
-    return 0.2 * bill;
-}
-const tipAmntOne = tipAmount(124);
-const tipAmntTwo = tipAmount(48);
-const tipAmntThree = tipAmount(268);
+// function tipAmount(bill) {
+//     return 0.2 * bill;
+// }
+// const tipAmntOne = tipAmount(124);
+// const tipAmntTwo = tipAmount(48);
+// const tipAmntThree = tipAmount(268);
 
-// console.log(tipAmntOne);
-// console.log(tipAmntTwo);
-// console.log(tipAmntThree);
-const tipAmnts = [tipAmntOne, tipAmntTwo, tipAmntThree]
-console.log(tipAmnts);
-const totalBill = [tipAmntOne + 124, tipAmntTwo + 48, tipAmntThree + 268]
-console.log(totalBill);
+// // console.log(tipAmntOne);
+// // console.log(tipAmntTwo);
+// // console.log(tipAmntThree);
+// const tipAmnts = [tipAmntOne, tipAmntTwo, tipAmntThree]
+// console.log(tipAmnts);
+// const totalBill = [tipAmntOne + 124, tipAmntTwo + 48, tipAmntThree + 268]
+// console.log(totalBill);
+
+/***********************
+ * Objects and Properties
+ */
+// onject literal
+//  const john = {
+//      firstName: 'John',
+//      lastName: 'Smith',
+//      birthYear: 1990,
+//      family: ['Jane', 'Mark', 'Bob', 'Emaily' ],
+//      job: 'teacher',
+//      isMarried: false
+//  };
+//  console.log(john.firstName);
+//  console.log(john['lastName']);
+// const x = 'birthYear';
+//  console.log(john[x]);
+
+//  john.job = 'designer';
+//  john['isMarried'] = true;
+//  console.log(john);
+
+//  // new object syntax
+
+//  const jane = new Object();
+//  jane.firstName = 'Jane';
+//  jane.birthYear = 1969;
+//  jane.lastName = 'Smith';
+//  console.log(jane);
+
+/*************************
+ * Objects and methods
+ */
+
+// const john = {
+//          firstName: 'John',
+//          lastName: 'Smith',
+//          birthYear: 1992,
+//          family: ['Jane', 'Mark', 'Bob', 'Emaily' ],
+//          job: 'teacher',
+//          isMarried: false,
+//          calcAge: function(birthYear) {
+//              this.age = 2018 - this.birthYear;
+//          }
+//      };
+// john.calcAge();
+// console.log(john);
+
+/***********
+ * coding challenge 4
+ */
+
+//  const Mark = {
+//      fullName: 'Mark Smith',
+//      mass: 170,
+//     height: 68,
+//      calcBMI: function() {
+//          this.BMI = this.mass / (this.height * this.height);
+//          return this.BMI;
+//      }
+//  };
+//  console.log(Mark);
+
+//  const John = {
+//     fullName: 'John Smith',
+//     mass: 160,
+//     height: 69,
+//     calcBMI: function() {
+//         this.BMI = this.mass / (this.height * this.height);
+//         return this.BMI;
+//     }
+// };
+
+
+
+//  if (John.calcBMI() > Mark.calcBMI()) {
+//     console.log( John.fullName + '\'s' + ' BMI = ' + John.BMI );
+//  } else if (John.BMI < Mark.BMI) {
+//     console.log( Mark.fullName + '\'s' + ' BMI = ' + Mark.BMI );
+//  } else {
+//     console.log( 'They have the same BMI.' );
+//  }
+
+/****************
+ * Loops and iteration
+ */
+
+// for (let i = 1; i <= 20; i += 2) {
+//     console.log(i);
+// }
+
+// // i = 0, 0 < 10 true, log i to console, i ++
+// // i = 1, 1 < 10 true, log i to console, i ++
+// //...
+// // i = 10, 10 < 10 false, log i to console, i ++
+
+// const john = ['John', 'Smith', 1990, 'designer', 'false'];
+
+// for (let i = 0; i < john.length; i++) {
+//     console.log(john[i]);
+// }
+
+// // while loop
+// let i = 0;
+// while(i < john.length) {
+//     console.log(john[i]);
+//     i++;
+// }
+
+// continue and break statements
+
+// const john = ['John', 'Smith', 1990, 'designer', 'false'];
+
+// for (let i = 0; i < john.length; i++) {
+//     if (typeof john[i] !== 'string') continue;
+//     console.log(john[i]);
+// }
+
+// for (let i = 0; i < john.length; i++) {
+//     if (typeof john[i] !== 'string') break;
+//     console.log(john[i]);
+// }
+
+// //looping backwards
+// for (let i = john.length - 1; i >= 0; i--) {
+//     console.log(john[i]);
+// }
+
+const johnBillTips = {
+    fullName: 'John Smith',
+    bills: [124, 48, 268, 180, 42],
+    calcTips: function() {
+        this.tips = [];
+        this.finalValues = [];
+        for (var i = 0; i < this.bills.length; i++)
+        {
+            //determine percentage based on tiping rules
+            let percentage;
+            let bill = this.bills[i];
+            if(bill < 50) {
+                percentage = .2;
+            } else if(bill >= 50 && bill < 200) {
+                percentage = .15;
+            } else {
+                percentage = .1;
+            }
+
+            //add result to corresponding arrays
+            this.tips[i] = bill * percentage;
+            this.finalValues[i] = bill + (bill * percentage);
+
+        }
+
+        }
+    }
+
+
+
+
+    const johnBillTips = {
+        fullName: 'Mark Miller',
+        bills: [77, 475, 268, 180, 42],
+        calcTips: function() {
+            this.tips = [];
+            this.finalValues = [];
+            for (var i = 0; i < this.bills.length; i++)
+            {
+                //determine percentage based on tiping rules
+                let percentage;
+                let bill = this.bills[i];
+                if(bill < 50) {
+                    percentage = .2;
+                } else if(bill >= 50 && bill < 200) {
+                    percentage = .15;
+                } else {
+                    percentage = .1;
+                }
+    
+                //add result to corresponding arrays
+                this.tips[i] = bill * percentage;
+                this.finalValues[i] = bill + (bill * percentage);
+    
+            }
+    
+            }
+        }
+    
+        johnBillTips.calcTips();
+        console.log(johnBillTips);
